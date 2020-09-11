@@ -28,6 +28,7 @@ Non-ASCII characters should be rare and must use UTF-8 formatting.
 ### Indentation
 
 Spaces are used for indentation instead of tabs.
+
 Block indentation increases +4 spaces each time a new block or block-like construct is opened.
 When the block ends, the indent returns to the previous indent level.
 If line-wrapping occurs an extra indentation of +8 spaces should be added.
@@ -82,6 +83,7 @@ x += y++;
 
 Logical operators `&&` and `||` should also have spaces around them.
 This does not apply to unary logical operator `!` which should be written adjacent to the variable it affects.
+
 Similarly, bitwise operators should have spaces around them, except the unary complement (bit inversion) operator `~` which should also be written adjacent to the variable it affects.
 
 Comparison operators ought to have spaces around them too.
@@ -98,6 +100,15 @@ Address-of `&` and de-reference `*` unary operators should be always adjacent to
 
 When overloading an operator, there should be a space between the `operator` keyword and the operator being overloaded.
 
+```c++
+Subscriber& Subscriber::operator <<(
+        const qos::SubscriberQos& qos)
+{
+    this->qos(qos);
+    return *this;
+}
+```
+
 #### Templates
 
 There should be a space between closing angles `>`.
@@ -105,6 +116,11 @@ There should be a space between closing angles `>`.
 ```c++
 std::map<std::string, std::vector<DataWriterImpl*> > writers_;
 ```
+
+#### Line-end Comments
+
+Lines that are non-obvious should get a comment at the end of the line.
+These end-of-line comments should be separated from the code by a space.
 
 ### Function Declarations and Definitions
 
@@ -127,7 +143,7 @@ void EDPStatic::assignRemoteEndpoints(
 {
     // Method body
 }
-                                        // Blank line between method
+                                        // Blank line between methods
 // Incorrect
 void EDPStatic::assignRemoteEndpoints(const ParticipantProxyData& pdata)
 {
@@ -306,11 +322,6 @@ There must be spaces around preprocessor `##` concatenation operator.
 ```c++
 #define PASTE2( x, y) x ## y
 ```
-
-### Line-end Comments
-
-Lines that are non-obvious should get a comment at the end of the line.
-These end-of-line comments should be separated from the code by a space.
 
 ## Struct vs Classes
 
