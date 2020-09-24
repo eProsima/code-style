@@ -1,6 +1,6 @@
-# Code Style for *eprosima Fast DDS*
+# Code Style for eProsima open source C++ projects 
 
-This document describes the code style for the [*eprosima Fast DDS* project](https://github.com/eProsima/Fast-DDS) in order to improve the code readability and maintainability.
+This document describes the code style for the [eProsima open source C++ projects](https://github.com/eProsima) in order to improve the code readability and maintainability.
 
 This code style is enforced through unit tests run automatically every time a pull request is done using [*uncrustify*](https://github.com/uncrustify/uncrustify).
 The latest results from these tests can be found [here](http://jenkins.eprosima.com:8080/job/fastdds_github_uncrustify/lastBuild/).
@@ -9,7 +9,7 @@ Over time, this code style will apply to all source files.
 
 ## Language and Standard
 
-*eprosima Fast DDS* project is mostly written in C++.
+The scope of this document only affects eProsima open source projects written in C++ language.
 The followed Standard is C++14.
 
 ## Formatting
