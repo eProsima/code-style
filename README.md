@@ -3,19 +3,19 @@
 This document describes the code style for the [*eprosima Fast DDS* project](https://github.com/eProsima/Fast-DDS) in order to improve the code readability and maintainability.
 
 This code style is enforced through unit tests run automatically every time a pull request is done using [*uncrustify*](https://github.com/uncrustify/uncrustify).
-Latest results from these tests can be found [here](http://jenkins.eprosima.com:8080/job/fastdds_github_uncrustify/lastBuild/).
+The latest results from these tests can be found [here](http://jenkins.eprosima.com:8080/job/fastdds_github_uncrustify/lastBuild/).
 These tests only run over those files where changes have been made.
 Over time, this code style will apply to all source files.
 
 ## Language and Standard
 
 *eprosima Fast DDS* project is mostly written in C++.
-The Standard followed is C++14.
+The followed Standard is C++14.
 
 ## Formatting
 
 The code style is formalized in the [uncrustify.cfg](uncrustify.cfg) file for the uncrustify tool.
-Below, the more important rules that are enforced are listed.
+The most important rules that are enforced are listed below.
 
 ### Line length
 
@@ -31,7 +31,7 @@ Spaces are used for indentation instead of tabs.
 
 Block indentation increases +4 spaces each time a new block or block-like construct is opened.
 When the block ends, the indent returns to the previous indent level.
-If line-wrapping occurs an extra indentation of +8 spaces should be added.
+If line-wrapping occurs, an extra indentation of +8 spaces should be added.
 
 ### Vertical Whitespace
 
@@ -40,17 +40,17 @@ There must be one blank line between function or method declarations.
 There must also be one blank line before and after access specifiers (`public`, `private` and `protected`) within a class definition.
 
 Within a method or function declaration, there should be blank lines separating different functionalities.
-It should be convenient to start each functionality block with a comment.
+It is convenient to start each functionality block with a comment.
 
 ### Horizontal Whitespace
 
-There should not be trailing whitespace at the end of the line.
+There should not be any trailing whitespace at the end of the line.
 
 #### General
 
-When declaring variables, there must be only one space between type and variable name.
+When declaring variables, there must be only one space between the type and the variable name.
 If several variables are declared in the same line, there must be a space after the comma, but not before.
-This also applies in function declarations and callings.
+This also applies to function declarations and callings.
 
 There must be no space before semicolons.
 
@@ -124,9 +124,9 @@ These end-of-line comments should be separated from the code by a space.
 
 ### Function Declarations and Definitions
 
-To improve parameter readability, each parameter must be in its own line, even the first one and even if there is only one parameter.
+To improve parameter readability, each parameter must be in its own line, even the first one, and even if there is only one parameter.
 The line-wrapping indentation is to be used in this case.
-Never indent to the opening parenthesis level, the first parameter, etc.
+Never indent to the opening parenthesis level.
 
 This does not apply when calling the function.
 In this case the parameters should be in the same line taking into account the space after each comma that separates the parameters.
@@ -199,11 +199,11 @@ const DomainParticipant* get_participant() const;
 
 Format parameters and bodies as for any other function, and capture lists like other comma-separated lists.
 
-For by-reference captures, do not leave a space between the ampersand `&` and the variable name.
+In by-reference captures, do not leave a space between the ampersand `&` and the variable name.
 
 There should not be a space separating the closing square bracket `]` from the opening parenthesis `(` when an argument list is present in the lambda expression.
 
-Lamba bodies should be indented following the indentation rules and both the opening and close braces should be each alone in their own line.
+Lamba bodies should be indented following the indentation rules and both the opening and closing braces should be each alone in their own line.
 
 ```c++
     auto init_fun = [this, reader, &att, &rqos](
@@ -220,7 +220,7 @@ Lamba bodies should be indented following the indentation rules and both the ope
 Any base class name should be on the same line as the subclass name, subject to the 120-column limit.
 
 The braces should open and close each in its own line.
-This also applies for structures `struct`, unions `union` and enumerates `enum`.
+This also applies to structures `struct`, unions `union` and enumerates `enum`.
 
 The `public:`, `protected:`, and `private:` keywords should not be indented.
 Except for the first instance, these keywords should be preceded by a blank line.
@@ -247,8 +247,8 @@ protected:
 ### Constructor Initializer List
 
 Constructor initializer parameters should be each in one line.
-Except the first parameter which is preceded by a colon `:`, the rest should have the comma `,` before the name.
-There should also be a space between the colon and the comma following the [horizontal whitespace rules](#horizontal-whitespace).
+Except for the first parameter which is preceded by a colon `:`, the rest should have the comma `,` before the name.
+There should also be a space between the colon or the comma and the parameters following the [horizontal whitespace rules](#horizontal-whitespace).
 
 The indentation in this case, instead of being +8 spaces, is only of +4 spaces.
 
@@ -290,7 +290,7 @@ public:
 
 [//]: # (The uncrustify configuration file does not enforce that the template parameters should be each in a different line.)
 
-Template declaration should be in a different line from the entity it modifies.
+The template declaration should be in a different line from the entity it modifies.
 
 ```c++
 template<typename K, typename V>
@@ -302,10 +302,10 @@ struct map_size_helper : public detail::pool_size_helper<detail::map_node_size<K
 ### Preprocessor Directives
 
 The hash mark `#` that starts a preprocessor directive should always be at the beginning of the line.
-Even when preprocessor directives are within the body of indented code, the directives should start at the beginning of the line.
+Even when preprocessor directives are within a block of indented code, the directives should start at the beginning of the line.
 
 There should be a comment after `#endif` indicating the `#if` which is ending.
-This is even more important when the scope of the `#if` is great enough and there may be doubts.
+This is even more important when the scope of the `#if` is great enough, and there may be doubts.
 
 ```c++
     ProtocolVersion_t():
@@ -317,7 +317,7 @@ This is even more important when the scope of the `#if` is great enough and ther
 #endif // HAVE_SECURITY
 ```
 
-There must be spaces around preprocessor `##` concatenation operator.
+There must be spaces around the preprocessor `##` concatenation operator.
 
 ```c++
 #define PASTE2( x, y) x ## y
@@ -355,21 +355,21 @@ File extensions `.cpp` and `.hpp` are used for source files with C++ code.
 On the other hand, use `.c` and `.h` extensions if the file is in C code.
 
 Filenames should be all lowercase and can include underscores `_`.
-However, class files which define or declare a class, should take the class name.
+However, class files that define or declare a class should take the class name.
 
 ### Type Names
 
 Type names start with a capital letter and have a capital letter for each new word, with no underscores.
-This convention is followed by all types: classes, structs, type aliases, enums and type template parameters.
-Usually this convention is called *CamelCase*.
+This convention is followed by all types: classes, structs, type aliases, enums, and type template parameters.
+Usually, this convention is called *CamelCase*.
 
 ### Variable Names
 
 The names of variables (including function parameters) and data members are all lowercase, with underscores between words.
-Data members of classes (but not structs) additionally have trailing underscore.
+Data members of classes (but not structs) additionally have a trailing underscore.
 
 All data members should be private.
-Accesors and mutators (get and set functions) will take the name of the variable they affect without the trailing underscore.
+Accessors and mutators (get and set functions) will take the name of the variable they affect without the trailing underscore.
 
 ```c++
 class Table
@@ -377,11 +377,20 @@ class Table
 public:
 
     void row_count(
-            long count) { row_count_ = count; }
+            long count)
+    {
+        row_count_ = count;
+    }
 
-    long row_count() const { return row_count_; }
+    long row_count() const
+    {
+        return row_count_;
+    }
 
-    long& row_count() { return row_count_; }
+    long& row_count()
+    {
+        return row_count_;
+    }
 
 private:
 
