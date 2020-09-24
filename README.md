@@ -182,22 +182,25 @@ if (!error) return success;
 
 ### Pointer and Reference Expressions
 
-When declaring a pointer or reference variable, the `*` or `&` must be always adjacent to the type and introduce a space before the variable name.
+When declaring a pointer or reference variable, the `*` or `&` must be always adjacent to the type and separated from the variable name by a space.
+There is an exception when defining several pointers or references in the same line. In this case the `*` or `&` must be adjacent to the name. 
 This also applies when declaring a prototype and defining a function or method.
 
-In case of defining double pointers (pointer to pointer), there should be no space between the asterisks `*`.
+In the case of defining double pointers (pointer to pointer), there should be no space between the asterisks `*`.
 
 ```c++
 char* p;
 int** ptr;
 int& x;
 
+int *value, *key;
+
 const DomainParticipant* get_participant() const;
 ```
 
 ### Lambda Expressions
 
-Format parameters and bodies as for any other function, and capture lists like other comma-separated lists.
+The format for parameters and lambda bodies should be as for any other function, and the capture lists like other comma-separated lists.
 
 In by-reference captures, do not leave a space between the ampersand `&` and the variable name.
 
@@ -269,7 +272,8 @@ This is the only exception in the code style where the opening brace is not in i
 
 Namespaces do not add an extra level of indentation.
 
-There should be a comment after the closing brace of the namespace, even more if the scope of the namespace is great enough and there may be doubts about which namespace is being closed.
+There should be a comment after the closing brace of the namespace.
+This is even more important when the scope of the namespace is great enough, and there may be doubts about which block is being closed.
 
 ```c++
 namespace network {
@@ -326,11 +330,10 @@ There must be spaces around the preprocessor `##` concatenation operator.
 ## Struct vs Classes
 
 Use a struct only for passive objects that carry data; everything else is a class.
-It is advisable that structs do not provide any method, although public access methods could be accepted.
-However, as the struct members should be public, there would be no need to provide those methods.
+As the struct members must be public, there would be no need to provide any methods.
 
 If more functionality is required, a class is more appropriate.
-If in doubt, make it a class.
+If there is any doubt, make it a class.
 
 ## Naming
 
