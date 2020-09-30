@@ -109,18 +109,36 @@ Subscriber& Subscriber::operator <<(
 }
 ```
 
-#### Templates
+#### Nested parentheses
 
-There should be a space between closing angles `>`.
+There should not be any space between nested parentheses.
+This also applies to nested angle brackets in templates.
 
 ```c++
-std::map<std::string, std::vector<DataWriterImpl*> > writers_;
+if (it == value_.end())
+{
+    // Code
+}
+
+std::map<std::string, std::vector<DataWriterImpl*>> writers_;
 ```
 
 #### Line-end Comments
 
 Lines that are non-obvious should get a comment at the end of the line.
 These end-of-line comments should be separated from the code by a space.
+
+### Variable Declarations
+
+Each variable declaration should be in its own line.
+
+```c++
+int i;
+int j;
+
+// Incorrect
+int i, j;
+```
 
 ### Function Declarations and Definitions
 
@@ -183,7 +201,6 @@ if (!error) return success;
 ### Pointer and Reference Expressions
 
 When declaring a pointer or reference variable, the `*` or `&` must be always adjacent to the type and separated from the variable name by a space.
-There is an exception when defining several pointers or references in the same line. In this case the `*` or `&` must be adjacent to the name. 
 This also applies when declaring a prototype and defining a function or method.
 
 In the case of defining double pointers (pointer to pointer), there should be no space between the asterisks `*`.
@@ -192,8 +209,6 @@ In the case of defining double pointers (pointer to pointer), there should be no
 char* p;
 int** ptr;
 int& x;
-
-int *value, *key;
 
 const DomainParticipant* get_participant() const;
 ```
@@ -235,7 +250,7 @@ class DomainParticipant : public Entity
 public: // No indentation
                                                 // Blank line
     RTPS_DllAPI ReturnCode_t get_qos(
-        DomainParticipantQos& qos) const;
+            DomainParticipantQos& qos) const;
                                                 // Blank line before
 protected:
                                                 // and after
@@ -324,7 +339,7 @@ This is even more important when the scope of the `#if` is great enough, and the
 There must be spaces around the preprocessor `##` concatenation operator.
 
 ```c++
-#define PASTE2( x, y) x ## y
+#define PASTE2(x, y) x ## y
 ```
 
 ## Struct vs Classes
