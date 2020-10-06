@@ -198,6 +198,29 @@ if (!error)
 if (!error) return success;
 ```
 
+### Try - catch blocks
+
+Both the opening and closing braces in a try or catch block should be each alone in their own new line.
+
+```c++
+// Correct
+try
+{
+    foo();
+}
+catch
+{
+    error();
+}
+
+// Incorrect
+try {
+    foo();
+} catch {
+    error();
+}
+```
+
 ### Pointer and Reference Expressions
 
 When declaring a pointer or reference variable, the `*` or `&` must be always adjacent to the type and separated from the variable name by a space.
