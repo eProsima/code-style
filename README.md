@@ -443,6 +443,34 @@ private:
 
 Function names are lowercase with underscores between words.
 
+## Header files
+
+### Protecting agains multiple inclusion
+
+Public header files should be protected with a `#ifndef / #define` guard that mimicks the path (excluding
+the initial `include` folder) and the filename, and surrounded with underscores.
+For instance, header file `include/fastdds/dds/core/LoanableArray.hpp` should use `_FASTDDS_DDS_CORE_LOANABLEARRAY_HPP_`.
+To avoid guards duplicity, underscores and any character that cannot be used on a `#define` are forbidden on folder names.
+
+If a filename has any character not usable on a `#define` it is removed when doing the conversion,
+but the presence of such characters is discouraged.
+For instance, header file `include/fastdds/header-one.hpp` would use define `_FASTDDS_HEADERONE_HPP`.
+It is thus forbidden to have two headers on the same folder with names that differ only on special characters (having
+`header-one.hpp` you cannot have `header_one.hpp` or `headerone.hpp`)
+
+### Header contents
+
+A header should only contain one of the following contents:
+
+* the declaration of a single struct/class, along with related static operators
+* a bunch of constants on a single namespace
+* a bunch of free functions on a single namespace
+
+### Including headers
+
+Using angle brackets `#include <header>` is prefered over double quotes `#include "header"`, as it allows to mock a header
+file by prepending a folder when on the compiler command.
+
 ## C++ Features
 
 ### nullptr
