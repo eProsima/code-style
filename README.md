@@ -448,7 +448,7 @@ Function names are lowercase with underscores between words.
 ### Protecting agains multiple inclusion
 
 Public header files should be protected with a `#ifndef / #define` guard that mimicks the path (excluding
-the initial `include` folder) the and filename, and surrounded with underscores.
+the initial `include` folder) and the filename, and surrounded with underscores.
 For instance, header file `include/fastdds/dds/core/LoanableArray.hpp` should use `_FASTDDS_DDS_CORE_LOANABLEARRAY_HPP_`.
 To avoid guards duplicity, underscores and any character that cannot be used on a `#define` are forbidden on folder names.
 
@@ -462,7 +462,7 @@ It is thus forbidden to have two headers on the same folder with names that diff
 
 A header should only contain one of the following contents:
 
-* the declarartion of a single struct/class, along with related static operators
+* the declaration of a single struct/class, along with related static operators
 * a bunch of constants on a single namespace
 * a bunch of free functions on a single namespace
 
